@@ -15,8 +15,8 @@ import javax.swing.border.EmptyBorder;
 public class FrameChonCongCu extends JFrame {
 
 	private JPanel contentPane;
-	private TaoDeThi frmTaoDeThi;
-	private ThemCauHoi frmThemCauHoi;
+	private FrameTaoDeThi frmTaoDeThi;
+	private FrameThemCauHoi frmThemCauHoi;
 	private JButton btnTaoDeThi;
 	private JButton btnThemCauHoi;
 	private JButton btnQuayLai;
@@ -27,8 +27,8 @@ public class FrameChonCongCu extends JFrame {
 	 */
 	public FrameChonCongCu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmTaoDeThi = new TaoDeThi();
-		frmThemCauHoi = new ThemCauHoi();
+		frmTaoDeThi = new FrameTaoDeThi();
+		frmThemCauHoi = new FrameThemCauHoi();
 		setBounds(450, 150, 400, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -137,19 +137,19 @@ public class FrameChonCongCu extends JFrame {
 		this.mon = mon;
 	}
 
-	public TaoDeThi getFrmTaoDeThi() {
+	public FrameTaoDeThi getFrmTaoDeThi() {
 		return frmTaoDeThi;
 	}
 
-	public void setFrmTaoDeThi(TaoDeThi frmTaoDeThi) {
+	public void setFrmTaoDeThi(FrameTaoDeThi frmTaoDeThi) {
 		this.frmTaoDeThi = frmTaoDeThi;
 	}
 
-	public ThemCauHoi getFrmThemCauHoi() {
+	public FrameThemCauHoi getFrmThemCauHoi() {
 		return frmThemCauHoi;
 	}
 
-	public void setFrmThemCauHoi(ThemCauHoi frmThemCauHoi) {
+	public void setFrmThemCauHoi(FrameThemCauHoi frmThemCauHoi) {
 		this.frmThemCauHoi = frmThemCauHoi;
 	}
 

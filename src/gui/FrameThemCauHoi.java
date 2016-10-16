@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class ThemCauHoi extends JFrame {
+public class FrameThemCauHoi extends JFrame {
 
 	private ChonLoaiCauHoi pnChonLoai;
 	private Integer mon;
@@ -19,7 +19,7 @@ public class ThemCauHoi extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ThemCauHoi() {
+	public FrameThemCauHoi() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mon = 0;
 		setBounds(450, 150, 400, 400);

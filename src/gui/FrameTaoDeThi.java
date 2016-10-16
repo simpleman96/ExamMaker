@@ -10,14 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class TaoDeThi extends JFrame {
+public class FrameTaoDeThi extends JFrame {
 
 	private ChonHinhThucTao pnChonHinhThuc;
 	
 	private Integer mon;
 	
 	
-	public TaoDeThi(){
+	public FrameTaoDeThi(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 150, 400, 400);
 		mon = 0;
