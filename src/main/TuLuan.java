@@ -13,6 +13,11 @@ public class TuLuan extends CauHoi{
 		this.goiYDapAn = goiYDapAn;
 	}
 	
+	@Override
+	public void inCauHoi() {
+		System.out.println(" " + getDeBai());
+	}
+	
 	
 	public String getGoiYDapAn() {
 		return goiYDapAn;
@@ -21,5 +26,5 @@ public class TuLuan extends CauHoi{
 	public void setGoiYDapAn(String goiYDapAn) {
 		this.goiYDapAn = goiYDapAn;
 	}
-	
+
 }
