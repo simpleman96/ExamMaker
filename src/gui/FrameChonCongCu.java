@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
 
 public class FrameChonCongCu extends JFrame {
 
@@ -77,13 +78,13 @@ public class FrameChonCongCu extends JFrame {
 				setVisible(false);
 				frmThemCauHoi.setMon(mon);
 				if(mon == 1){
-					frmThemCauHoi.setTitle("Tạo Đề Thi - Cơ Sở Dữ Liệu");
+					frmThemCauHoi.setTitle("Thêm câu hỏi - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){
-					frmThemCauHoi.setTitle("Tạo Đề Thi - Trí Tuệ Nhân Tạo");
+					frmThemCauHoi.setTitle("Thêm câu hỏi - Trí Tuệ Nhân Tạo");
 				}else if(mon == 3){
-					frmThemCauHoi.setTitle("Tạo Đề Thi - Lập Trình Hướng Đối Tượng");
+					frmThemCauHoi.setTitle("Thêm câu hỏi - Lập Trình Hướng Đối Tượng");
 				}else {
-					frmThemCauHoi.setTitle("Tạo Đề Thi - Mạng Máy Tính");
+					frmThemCauHoi.setTitle("Thêm câu hỏi - Mạng Máy Tính");
 				}
 				frmThemCauHoi.setVisible(true);
 			}
@@ -95,9 +96,19 @@ public class FrameChonCongCu extends JFrame {
 		btnQuayLai.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnQuayLai.setBounds(30, 300, 90, 25);
 		contentPane.add(btnQuayLai);
+		
+		JButton btnDeThiDaLuu = new JButton("Đề thi đã  tạo");
+		btnDeThiDaLuu.setBackground(SystemColor.activeCaptionBorder);
+		btnDeThiDaLuu.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnDeThiDaLuu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnDeThiDaLuu.setBounds(110, 200, 150, 30);
+		contentPane.add(btnDeThiDaLuu);
 		//===================
 		
-		frmTaoDeThi.getPnChonHinhThuc().getBtnQuayLai().addActionListener(new ActionListener() {
+		frmTaoDeThi.getBtnQuayLai().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -106,7 +117,7 @@ public class FrameChonCongCu extends JFrame {
 			}
 		});
 		
-		frmThemCauHoi.getPnChonLoai().getBtnQuayLai().addActionListener(new ActionListener() {
+		frmThemCauHoi.getBtnQuayLai().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -152,5 +163,4 @@ public class FrameChonCongCu extends JFrame {
 	public void setFrmThemCauHoi(FrameThemCauHoi frmThemCauHoi) {
 		this.frmThemCauHoi = frmThemCauHoi;
 	}
-
 }

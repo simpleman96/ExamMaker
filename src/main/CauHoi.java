@@ -1,6 +1,8 @@
 package main;
 
-public class CauHoi {
+import java.io.Serializable;
+
+public class CauHoi implements Serializable {
 	private String maMonHoc;
 	private int thuocChuong;
 	private String deBai;
