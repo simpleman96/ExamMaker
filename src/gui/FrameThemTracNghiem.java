@@ -3,6 +3,8 @@ package gui;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -64,8 +66,8 @@ public class FrameThemTracNghiem extends JFrame {
 		JLabel lbDapAn = new JLabel("Các đáp án");
 		lbDapAn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JTextArea txtrThmpn = new JTextArea();
-		txtrThmpn.setText("Thêm đáp án ...");
+		JTextArea taDapAn = new JTextArea();
+		taDapAn.setText("Thêm đáp án ...");
 		
 		btnThemDA = new JButton("Thêm đáp án");
 		btnThemDA.setBackground(SystemColor.activeCaptionBorder);
@@ -97,7 +99,7 @@ public class FrameThemTracNghiem extends JFrame {
 									.addComponent(btnXemCauHoi)
 									.addGap(18)
 									.addComponent(btnThemDA))
-								.addComponent(txtrThmpn, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)))
+								.addComponent(taDapAn, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(btnQuayLai)
@@ -126,7 +128,7 @@ public class FrameThemTracNghiem extends JFrame {
 					.addGap(18)
 					.addComponent(lbDapAn, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtrThmpn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addComponent(taDapAn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.UNRELATED)

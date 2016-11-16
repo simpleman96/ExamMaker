@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 public class FrameTaoDeThi extends JFrame {
 	
-	private FrameNgauNhien frmTaoDeNgauNhien;
+	private FrameTaoDeNgauNhien frmTaoDeNgauNhien;
 
 	private JPanel panel;
 	private JLabel label;
@@ -26,7 +26,7 @@ public class FrameTaoDeThi extends JFrame {
 	private Integer mon;	
 	
 	public FrameTaoDeThi(){
-		frmTaoDeNgauNhien = new FrameNgauNhien();
+		frmTaoDeNgauNhien = new FrameTaoDeNgauNhien();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 150, 400, 400);
 		mon = 0;

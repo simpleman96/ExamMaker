@@ -3,6 +3,9 @@ package gui;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -18,8 +21,6 @@ import javax.swing.border.EmptyBorder;
 public class FrameThemTuLuan extends JFrame {
 
 	private JPanel contentPane;
-	
-	private JButton btnThemDA;
 	private JButton btnXemCauHoi;
 	private JButton btnQuayLai;
 	private JButton btnThemCauHoi;
@@ -56,18 +57,15 @@ public class FrameThemTuLuan extends JFrame {
 		
 		JTextArea taDeBai = new JTextArea();
 		taDeBai.setText("Thêm đề bài ...");
-		
+
 		JLabel lbDeBai = new JLabel("Đề bài");
 		lbDeBai.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lbDapAn = new JLabel("Gợi ý đáp án");
 		lbDapAn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JTextArea txtrThmpn = new JTextArea();
-		txtrThmpn.setText("Thêm gợi ý đáp án ...");
-		
-		btnThemDA = new JButton("Thêm đáp án");
-		btnThemDA.setBackground(SystemColor.activeCaptionBorder);
+		JTextArea taGoiYDapAn = new JTextArea();
+		taGoiYDapAn.setText("Thêm gợi ý đáp án ...");
 		
 		btnQuayLai = new JButton("Quay Lại");
 		btnQuayLai.setBackground(SystemColor.activeCaptionBorder);
@@ -81,33 +79,33 @@ public class FrameThemTuLuan extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(taDeBai, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-									.addComponent(btnXemCauHoi)
-									.addGap(18)
-									.addComponent(btnThemDA))
-								.addComponent(txtrThmpn, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(taGoiYDapAn, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(btnQuayLai)
 							.addPreferredGap(ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
-							.addComponent(btnThemCauHoi))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lbDapAn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lbDeBai, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(130)
-							.addComponent(lblThmCuHi)))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnXemCauHoi)
+								.addComponent(btnThemCauHoi))))
 					.addContainerGap())
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(148, Short.MAX_VALUE)
+					.addComponent(lblThmCuHi)
+					.addGap(124))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lbDeBai, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(363, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lbDapAn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(334, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -121,11 +119,9 @@ public class FrameThemTuLuan extends JFrame {
 					.addGap(18)
 					.addComponent(lbDapAn, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtrThmpn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addComponent(taGoiYDapAn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 					.addGap(26)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnThemDA)
-						.addComponent(btnXemCauHoi))
+					.addComponent(btnXemCauHoi)
 					.addPreferredGap(ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnQuayLai)
@@ -133,14 +129,6 @@ public class FrameThemTuLuan extends JFrame {
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
-	}
-
-	public JButton getBtnThemDA() {
-		return btnThemDA;
-	}
-
-	public void setBtnThemDA(JButton btnThemDA) {
-		this.btnThemDA = btnThemDA;
 	}
 
 	public JButton getBtnXemCauHoi() {
