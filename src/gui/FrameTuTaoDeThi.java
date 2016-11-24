@@ -3,8 +3,7 @@ package gui;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -13,8 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -27,6 +26,7 @@ public class FrameTuTaoDeThi extends JFrame {
 	private JList listTracNghiem;
 	private JList listTuLuan;
 	private JList listDe;
+	private JButton btnQuayLai;
 
 	/**
 	 * Launch the application.
@@ -49,36 +49,13 @@ public class FrameTuTaoDeThi extends JFrame {
 	 */
 	public FrameTuTaoDeThi() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 100, 900, 450);
+		setBounds(300, 100, 1000, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		JLabel lblToThi = new JLabel("Tạo đề thi tự tạo");
-		lblToThi.setHorizontalAlignment(SwingConstants.CENTER);
-		lblToThi.setFont(new Font("Tahoma", Font.PLAIN, 16));
-
 		JLabel lblChng = new JLabel("Chương");
 		lblChng.setFont(new Font("Tahoma", Font.PLAIN, 14));
-
-		JLabel lblCuHiTrc = new JLabel("Câu hỏi trắc nghiệm");
-		lblCuHiTrc.setFont(new Font("Tahoma", Font.PLAIN, 14));
-
-		JLabel lblCuHiT = new JLabel("Câu hỏi tự luận");
-		lblCuHiT.setFont(new Font("Tahoma", Font.PLAIN, 14));
-
-		JLabel lblCuHiTrong = new JLabel("Câu hỏi trong đề");
-		lblCuHiTrong.setFont(new Font("Tahoma", Font.PLAIN, 14));
-
-		listChuong = new JList();
-
-		listTracNghiem = new JList();
-
-		listTuLuan = new JList();
-
-		listDe = new JList();
-
-		initListsData();
 
 		JButton btnThemCauHoi = new JButton("Thêm các câu hỏi vào đề");
 		btnThemCauHoi.setBackground(SystemColor.activeCaptionBorder);
@@ -86,63 +63,108 @@ public class FrameTuTaoDeThi extends JFrame {
 		JButton btnXuatDe = new JButton("Xuất đề");
 		btnXuatDe.setBackground(SystemColor.activeCaptionBorder);
 
-		JButton btnQuayLai = new JButton("Quay lại");
+		btnQuayLai = new JButton("Quay lại");
 		btnQuayLai.setBackground(SystemColor.activeCaptionBorder);
+		
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		
+		listChuong = new JList();
+		listChuong.setSelectedIndex(0);
+		scrollPane_1.setViewportView(listChuong);
+
+		JScrollPane scrollPane = new JScrollPane();		
+		listTracNghiem = new JList();
+		scrollPane.setViewportView(listTracNghiem);
+
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		listTuLuan = new JList();
+		scrollPane_2.setViewportView(listTuLuan);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		listDe = new JList();
+		scrollPane_3.setViewportView(listDe);
+		
+		initListsData();
+		
+		JLabel label = new JLabel("Câu hỏi trắc nghiệm");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JLabel label_1 = new JLabel("Câu hỏi tự luận");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JLabel label_2 = new JLabel("Câu hỏi trong đề");
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JLabel label_3 = new JLabel("Tạo đề thi tự tạo");
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								gl_contentPane.createSequentialGroup().addGap(175).addComponent(lblToThi,
-										GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(25)
-								.addComponent(lblChng, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-								.addGap(20)
-								.addComponent(lblCuHiTrc, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-								.addGap(20)
-								.addComponent(lblCuHiT, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-								.addGap(20).addComponent(lblCuHiTrong, GroupLayout.PREFERRED_SIZE, 220,
-										GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane
-								.createParallelGroup(Alignment.LEADING,
-										false)
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(25)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(btnQuayLai)
-												.addGroup(gl_contentPane.createSequentialGroup()
-														.addComponent(listChuong, GroupLayout.PREFERRED_SIZE, 130,
-																GroupLayout.PREFERRED_SIZE)
-														.addGap(20)
-														.addComponent(listTracNghiem, GroupLayout.PREFERRED_SIZE, 200,
-																GroupLayout.PREFERRED_SIZE)
-														.addGap(20).addComponent(listTuLuan, GroupLayout.PREFERRED_SIZE,
-																200, GroupLayout.PREFERRED_SIZE)))
-										.addGap(20))
-								.addGroup(Alignment.TRAILING,
-										gl_contentPane.createSequentialGroup()
-												.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(btnThemCauHoi).addGap(31)))
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(listDe, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 220,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnXuatDe, Alignment.TRAILING))))
-				.addGap(39)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(20).addComponent(lblToThi).addGap(11)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(lblChng)
-						.addComponent(lblCuHiTrc).addComponent(lblCuHiT).addComponent(lblCuHiTrong))
-				.addGap(11)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(listChuong, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
-						.addComponent(listTracNghiem, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
-						.addComponent(listTuLuan, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
-						.addComponent(listDe, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE))
-				.addGap(6)
-				.addGroup(gl_contentPane
-						.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(btnXuatDe).addGap(17).addComponent(btnQuayLai))
-						.addComponent(btnThemCauHoi))
-				.addGap(23)));
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(45)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(lblChng, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+								.addComponent(btnQuayLai, Alignment.LEADING))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnThemCauHoi)
+										.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(157)
+											.addComponent(btnXuatDe))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(18)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
+												.addComponent(scrollPane_3, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)))))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(label, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(328)
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(44, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+					.addGap(40)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblChng)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+					.addGap(14)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+						.addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+						.addComponent(scrollPane_3, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnThemCauHoi)
+								.addComponent(btnXuatDe))
+							.addGap(37))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnQuayLai)
+							.addContainerGap())))
+		);
 		contentPane.setLayout(gl_contentPane);
 	}
 
@@ -152,9 +174,7 @@ public class FrameTuTaoDeThi extends JFrame {
 		for (int i = 0; i < 5; i++) {
 			chuongModel.addElement("Chuong " + i);
 		}
-
 		listChuong.setModel(chuongModel);
-		listChuong.setSelectedIndex(0);
 
 		DefaultListModel<String> c0TracNghiemModel = new DefaultListModel<>();
 		for (int i = 0; i < 20; i++) {
@@ -171,21 +191,24 @@ public class FrameTuTaoDeThi extends JFrame {
 			c2TracNghiemModel.addElement("Cau hoi Trac Nghiem c2 so " + i);
 		}
 
-		DefaultListModel<String> c3TracNghiemModel = new DefaultListModel<>();
-		for (int i = 0; i < 10; i++) {
-			c3TracNghiemModel.addElement("Cau hoi Trac Nghiem c3 so " + i);
-		}
-
-		DefaultListModel<String> c4TracNghiemModel = new DefaultListModel<>();
-		for (int i = 0; i < 10; i++) {
-			c4TracNghiemModel.addElement("Cau hoi Trac Nghiem c4 so " + i);
-		}
+//		DefaultListModel<String> c3TracNghiemModel = new DefaultListModel<>();
+//		for (int i = 0; i < 10; i++) {
+//			c3TracNghiemModel.addElement("Cau hoi Trac Nghiem c3 so " + i);
+//		}
+//
+//		DefaultListModel<String> c4TracNghiemModel = new DefaultListModel<>();
+//		for (int i = 0; i < 10; i++) {
+//			c4TracNghiemModel.addElement("Cau hoi Trac Nghiem c4 so " + i);
+//		}
 
 		DefaultListModel<String> c0TuLuanModel = new DefaultListModel<>();
+		ArrayList<String> c0TuLuanStringList = new ArrayList<>();
+		
 		for (int i = 0; i < 7; i++) {
-			c0TuLuanModel.addElement("Cau hoi Tu Luan c0 so " + i);
+			c0TuLuanStringList.add("Cau hoi Tu Luan c0 so " + i);
+			c0TuLuanModel.addElement(c0TuLuanStringList.get(i));
 		}
-
+		
 		DefaultListModel<String> c1TuLuanModel = new DefaultListModel<>();
 		for (int i = 0; i < 7; i++) {
 			c1TuLuanModel.addElement("Cau hoi Tu Luan c1 so " + i);
@@ -196,56 +219,74 @@ public class FrameTuTaoDeThi extends JFrame {
 			c2TuLuanModel.addElement("Cau hoi Tu Luan c2 so " + i);
 		}
 
-		DefaultListModel<String> c3TuLuanModel = new DefaultListModel<>();
-		for (int i = 0; i < 7; i++) {
-			c3TuLuanModel.addElement("Cau hoi Tu Luan c3 so " + i);
-		}
+//		DefaultListModel<String> c3TuLuanModel = new DefaultListModel<>();
+//		for (int i = 0; i < 7; i++) {
+//			c3TuLuanModel.addElement("Cau hoi Tu Luan c3 so " + i);
+//		}
 
-		DefaultListModel<String> c4TuLuanModel = new DefaultListModel<>();
-		for (int i = 0; i < 7; i++) {
-			c4TuLuanModel.addElement("Cau hoi Tu Luan c4 so " + i);
-		}
-
+//		DefaultListModel<String> c4TuLuanModel = new DefaultListModel<>();
+//		for (int i = 0; i < 7; i++) {
+//			c4TuLuanModel.addElement("Cau hoi Tu Luan c4 so " + i);
+//		}
+		
 		listChuong.addListSelectionListener(new ListSelectionListener() {
-
+			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				int index = listChuong.getSelectedIndex();
-				switch (index) {
-				case 0: {
+				if(listChuong.getSelectedIndex() == 0){
 					listTracNghiem.setModel(c0TracNghiemModel);
 					listTuLuan.setModel(c0TuLuanModel);
-				}
-					break;
-				case 1: {
+				}else if(listChuong.getSelectedIndex() == 1){
 					listTracNghiem.setModel(c1TracNghiemModel);
 					listTuLuan.setModel(c1TuLuanModel);
-				}
-					break;
-				case 2: {
+				}else if(listChuong.getSelectedIndex() == 2){
 					listTracNghiem.setModel(c2TracNghiemModel);
 					listTuLuan.setModel(c2TuLuanModel);
-				}
-					break;
-				case 3: {
-					listTracNghiem.setModel(c3TracNghiemModel);
-					listTuLuan.setModel(c3TuLuanModel);
-				}
-					break;
-				case 4: {
-					listTracNghiem.setModel(c4TracNghiemModel);
-					listTuLuan.setModel(c4TuLuanModel);
-				}
-					break;
-				default:{
-					listTracNghiem.setModel(c0TracNghiemModel);
-					listTuLuan.setModel(c0TuLuanModel);
-				}
-					break;
 				}
 			}
 		});
 		
 	}
 
+	public JList getListChuong() {
+		return listChuong;
+	}
+
+	public void setListChuong(JList listChuong) {
+		this.listChuong = listChuong;
+	}
+
+	public JList getListTracNghiem() {
+		return listTracNghiem;
+	}
+
+	public void setListTracNghiem(JList listTracNghiem) {
+		this.listTracNghiem = listTracNghiem;
+	}
+
+	public JList getListTuLuan() {
+		return listTuLuan;
+	}
+
+	public void setListTuLuan(JList listTuLuan) {
+		this.listTuLuan = listTuLuan;
+	}
+
+	public JList getListDe() {
+		return listDe;
+	}
+
+	public void setListDe(JList listDe) {
+		this.listDe = listDe;
+	}
+
+	public JButton getBtnQuayLai() {
+		return btnQuayLai;
+	}
+
+	public void setBtnQuayLai(JButton btnQuayLai) {
+		this.btnQuayLai = btnQuayLai;
+	}
+	
+	
 }

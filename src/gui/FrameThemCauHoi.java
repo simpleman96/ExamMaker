@@ -56,6 +56,7 @@ public class FrameThemCauHoi extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				frmThemTN.setMon(mon);
 				if(mon == 1){
 					frmThemTN.setTitle("Thêm Trắc Nghiệm - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){
@@ -80,6 +81,7 @@ public class FrameThemCauHoi extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				frmThemTL.setMon(mon);
 				if(mon == 1){
 					frmThemTL.setTitle("Thêm Tự Luận - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){

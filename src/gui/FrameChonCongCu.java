@@ -18,6 +18,8 @@ public class FrameChonCongCu extends JFrame {
 	private JPanel contentPane;
 	private FrameTaoDeThi frmTaoDeThi;
 	private FrameThemCauHoi frmThemCauHoi;
+	private FrameDeThiDaLuu frmDeDaLuu;
+	
 	private JButton btnTaoDeThi;
 	private JButton btnThemCauHoi;
 	private JButton btnQuayLai;
@@ -27,9 +29,11 @@ public class FrameChonCongCu extends JFrame {
 	 * Create the frame.
 	 */
 	public FrameChonCongCu() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTaoDeThi = new FrameTaoDeThi();
 		frmThemCauHoi = new FrameThemCauHoi();
+		frmDeDaLuu = new FrameDeThiDaLuu();
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 150, 400, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -91,21 +95,35 @@ public class FrameChonCongCu extends JFrame {
 		});
 		contentPane.add(btnThemCauHoi);
 		
+		JButton btnDeThiDaLuu = new JButton("Đề thi đã tạo");
+		btnDeThiDaLuu.setBackground(SystemColor.activeCaptionBorder);
+		btnDeThiDaLuu.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnDeThiDaLuu.setBounds(110, 200, 150, 30);
+		btnDeThiDaLuu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				frmDeDaLuu.setMon(mon);
+				if(mon == 1){
+					frmDeDaLuu.setTitle("Đề thi đã lưu - Cơ Sở Dữ Liệu");
+				}else if(mon == 2){
+					frmDeDaLuu.setTitle("Đề thi đã lưu - Trí Tuệ Nhân Tạo");
+				}else if(mon == 3){
+					frmDeDaLuu.setTitle("Đề thi đã lưu - Lập Trình Hướng Đối Tượng");
+				}else {
+					frmDeDaLuu.setTitle("Đề thi đã lưu - Mạng Máy Tính");
+				}
+				frmDeDaLuu.setVisible(true);
+			}
+		});
+		contentPane.add(btnDeThiDaLuu);
+		
+		
 		btnQuayLai = new JButton("Quay Lại");
 		btnQuayLai.setBackground(SystemColor.activeCaptionBorder);
 		btnQuayLai.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnQuayLai.setBounds(30, 300, 90, 25);
 		contentPane.add(btnQuayLai);
 		
-		JButton btnDeThiDaLuu = new JButton("Đề thi đã  tạo");
-		btnDeThiDaLuu.setBackground(SystemColor.activeCaptionBorder);
-		btnDeThiDaLuu.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnDeThiDaLuu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnDeThiDaLuu.setBounds(110, 200, 150, 30);
-		contentPane.add(btnDeThiDaLuu);
 		//===================
 		
 		frmTaoDeThi.getBtnQuayLai().addActionListener(new ActionListener() {
@@ -126,6 +144,14 @@ public class FrameChonCongCu extends JFrame {
 			}
 		});
 		
+		frmDeDaLuu.getBtnQuayLai().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frmDeDaLuu.setVisible(false);
+				setVisible(true);
+			}
+		});
 	}
 	
 	public JButton getBtnTaoDeThi(){

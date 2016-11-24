@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 public class FrameTaoDeThi extends JFrame {
 	
 	private FrameTaoDeNgauNhien frmTaoDeNgauNhien;
+	private FrameTuTaoDeThi frmTuTaoDe;
 
 	private JPanel panel;
 	private JLabel label;
@@ -27,6 +28,8 @@ public class FrameTaoDeThi extends JFrame {
 	
 	public FrameTaoDeThi(){
 		frmTaoDeNgauNhien = new FrameTaoDeNgauNhien();
+		frmTuTaoDe = new FrameTuTaoDeThi();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 150, 400, 400);
 		mon = 0;
@@ -46,7 +49,25 @@ public class FrameTaoDeThi extends JFrame {
 		btnTuTao.setBackground(SystemColor.activeCaptionBorder);
 		btnTuTao.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnTuTao.setBounds(110, 99, 150, 30);
+		btnTuTao.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				if(mon == 1){
+					frmTuTaoDe.setTitle("Tự Tạo Đề Thi - Cơ Sở Dữ Liệu");
+				}else if(mon == 2){
+					frmTuTaoDe.setTitle("Tự Tạo Đề Thi - Trí Tuệ Nhân Tạo");
+				}else if(mon == 3){
+					frmTuTaoDe.setTitle("Tự Tạo Đề Thi - Lập Trình Hướng Đối Tượng");
+				}else {
+					frmTuTaoDe.setTitle("Tự Tạo Đề Thi - Mạng Máy Tính");
+				}
+				frmTuTaoDe.setVisible(true);
+			}
+		});
 		panel.add(btnTuTao);
+
 		
 		btnTaoNgauNhien = new JButton("Tạo Ngẫu Nhiên");
 		btnTaoNgauNhien.setBackground(SystemColor.activeCaptionBorder);
@@ -76,6 +97,16 @@ public class FrameTaoDeThi extends JFrame {
 		btnQuayLai.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnQuayLai.setBounds(30, 300, 90, 25);
 		panel.add(btnQuayLai);
+		
+		//===========
+		frmTuTaoDe.getBtnQuayLai().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frmTuTaoDe.setVisible(false);
+				setVisible(true);
+			}
+		});
 		
 		frmTaoDeNgauNhien.getBtnQuayLai().addActionListener(new ActionListener() {
 			
