@@ -1,6 +1,8 @@
 package main;
 
-public class CauHoi {
+import java.io.Serializable;
+
+public abstract class CauHoi implements Serializable {
 	private String maMonHoc;
 	private int thuocChuong;
 	private String deBai;
@@ -22,6 +24,10 @@ public class CauHoi {
 		this.doKho = doKho;
 		this.diem = diem;
 	}
+	
+	public abstract void inCauHoi();
+	
+// Các getter setter
 	
 	public String getMaMonHoc() {
 		return maMonHoc;

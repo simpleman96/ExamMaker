@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TracNghiem extends CauHoi {
 	private boolean xaoTron;
@@ -19,6 +20,18 @@ public class TracNghiem extends CauHoi {
 		this.cacDapAn = cacDapAn;
 	}
 
+	@Override
+	public void inCauHoi() {
+		System.out.println(" " + getDeBai());
+		if(xaoTron){
+			Collections.shuffle(cacDapAn);
+		}
+		
+		for(int i = 0; i< cacDapAn.size(); i++){
+			System.out.println("\t" + i+1 + ". " + cacDapAn.get(i));
+		}
+	}
+	
 	public boolean getXaoTron() {
 		return xaoTron;
 	}
@@ -34,4 +47,6 @@ public class TracNghiem extends CauHoi {
 	public void setCacDapAn(ArrayList<DapAn> cacDapAn) {
 		this.cacDapAn = cacDapAn;
 	}
+
+
 }

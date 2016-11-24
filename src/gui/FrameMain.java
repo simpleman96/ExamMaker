@@ -38,7 +38,6 @@ public class FrameMain extends JFrame {
 		contentPane.add(lbChonMon);
 		
 		btnCoSo = new JButton("Cơ sở dữ liệu");
-		btnCoSo.setSize(new Dimension(50, 50));
 		btnCoSo.setBackground(SystemColor.activeCaptionBorder);
 		btnCoSo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCoSo.setBounds(110, 110, 180, 30);

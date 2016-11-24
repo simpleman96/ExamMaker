@@ -90,8 +90,10 @@ public class MainGUI {
 				frmChonCongCu.setTitle("Mạng Máy Tính");
 				frmChonCongCu.setVisible(true);
 			}
-		});
-		
-		
+		});	
 	}
+	
+	
+	
+	
 }

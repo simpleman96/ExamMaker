@@ -1,6 +1,8 @@
 package main;
 
-public class DapAn {
+import java.io.Serializable;
+
+public class  DapAn implements Serializable {
 	private String noiDung;
 	private boolean laDapAnDung;
 	
