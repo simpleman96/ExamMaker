@@ -28,9 +28,9 @@ public class FrameThemCauHoi extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FrameThemCauHoi() {
+	public FrameThemCauHoi(Integer m) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mon = 0;
+		this.mon = m;
 		setBounds(450, 150, 400, 400);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -38,8 +38,8 @@ public class FrameThemCauHoi extends JFrame {
 		setContentPane(panel);
 		
 		//Tạo Frame Thêm câu hỏi Trắc Nghiệm, Tự Luận
-		frmThemTN = new FrameThemTracNghiem();
-		frmThemTL = new FrameThemTuLuan();
+		frmThemTN = new FrameThemTracNghiem(mon);
+		frmThemTL = new FrameThemTuLuan(mon);
 		
 		label = new JLabel("Chon loại câu hỏi sẽ thêm");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -56,7 +56,7 @@ public class FrameThemCauHoi extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				frmThemTN.setMon(mon);
+//				frmThemTN.setMon(mon);
 				if(mon == 1){
 					frmThemTN.setTitle("Thêm Trắc Nghiệm - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){
@@ -81,7 +81,7 @@ public class FrameThemCauHoi extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				frmThemTL.setMon(mon);
+//				frmThemTL.setMon(mon);
 				if(mon == 1){
 					frmThemTL.setTitle("Thêm Tự Luận - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){

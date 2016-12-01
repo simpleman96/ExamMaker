@@ -3,30 +3,38 @@ package gui;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JList;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
+
+import main.MonHoc;
+import main.ReadWriteData;
+import main.TracNghiem;
+import main.TuLuan;
 
 public class FrameThemTuLuan extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnQuayLai;
 	private JButton btnThemCauHoi;
-	private JTextField tfDiem;
+	private JTextArea taDeBai;
+	private JTextArea taGoiYDapAn;
+	private JComboBox cbChuong;
+	private JComboBox cbDoKho;
 	
 	private Integer mon;
 
@@ -37,7 +45,7 @@ public class FrameThemTuLuan extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrameThemTuLuan frame = new FrameThemTuLuan();
+					FrameThemTuLuan frame = new FrameThemTuLuan(1);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +57,8 @@ public class FrameThemTuLuan extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FrameThemTuLuan() {
+	public FrameThemTuLuan(Integer mon) {
+		this.mon = mon;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 150, 450, 450);
 		contentPane = new JPanel();
@@ -60,7 +69,7 @@ public class FrameThemTuLuan extends JFrame {
 		lblThmCuHi.setHorizontalAlignment(SwingConstants.CENTER);
 		lblThmCuHi.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JTextArea taDeBai = new JTextArea();
+		taDeBai = new JTextArea();
 		taDeBai.setText("Thêm đề bài ...");
 
 		JLabel lbDeBai = new JLabel("Đề bài");
@@ -69,7 +78,7 @@ public class FrameThemTuLuan extends JFrame {
 		JLabel lbDapAn = new JLabel("Gợi ý đáp án");
 		lbDapAn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JTextArea taGoiYDapAn = new JTextArea();
+		taGoiYDapAn = new JTextArea();
 		taGoiYDapAn.setText("Thêm gợi ý đáp án ...");
 		
 		btnQuayLai = new JButton("Quay Lại");
@@ -81,81 +90,129 @@ public class FrameThemTuLuan extends JFrame {
 		JLabel lblNewLabel = new JLabel("Độ khó");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_1 = new JLabel("Điểm");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
 		JLabel lblNewLabel_2 = new JLabel("Chương");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		tfDiem = new JTextField();
-		tfDiem.setColumns(10);
-		
-		JComboBox cbChuong = new JComboBox();
+		cbChuong = new JComboBox();
 		cbChuong.setBackground(SystemColor.activeCaptionBorder);
 		
-		JComboBox cbDoKho = new JComboBox();
+		cbDoKho = new JComboBox();
 		cbDoKho.setBackground(SystemColor.activeCaptionBorder);
+		
+		initData();
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lbDapAn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lbDeBai, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(78)
+							.addComponent(lblThmCuHi))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(lbDeBai, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(taDeBai, GroupLayout.PREFERRED_SIZE, 405, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(lbDapAn))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel)
-								.addComponent(lblNewLabel_1)
-								.addComponent(lblNewLabel_2))
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblThmCuHi)
-								.addComponent(cbChuong, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(cbDoKho, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(tfDiem, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))))
+								.addComponent(lblNewLabel_2)
+								.addComponent(lblNewLabel))
+							.addGap(96)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(cbDoKho, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(cbChuong, Alignment.LEADING, 0, 74, Short.MAX_VALUE)))
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(10)
 								.addComponent(btnQuayLai)
 								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(btnThemCauHoi))
-							.addComponent(taGoiYDapAn, Alignment.LEADING)
-							.addComponent(taDeBai, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)))
-					.addContainerGap(27, Short.MAX_VALUE))
+							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(taGoiYDapAn, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
+					.addGap(14)
 					.addComponent(lblThmCuHi)
-					.addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(cbChuong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2))
-					.addGap(16)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(tfDiem, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-					.addGap(15)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
-						.addComponent(cbDoKho, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addComponent(lbDeBai)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(35)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_2)
+						.addComponent(cbChuong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(25)
+							.addComponent(lblNewLabel)
+							.addGap(33)
+							.addComponent(lbDeBai))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addComponent(cbDoKho, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(6)
 					.addComponent(taDeBai, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lbDapAn, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+					.addGap(15)
+					.addComponent(lbDapAn)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(taGoiYDapAn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+					.addGap(14)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnQuayLai)
-						.addComponent(btnThemCauHoi))
-					.addContainerGap())
+						.addComponent(btnThemCauHoi)))
 		);
 		contentPane.setLayout(gl_contentPane);
+	}
+	
+	public void initData() {
+		MonHoc monHoc = new MonHoc(mon);
+		DefaultComboBoxModel<String> chuongModel = new DefaultComboBoxModel<>();
+		for (int i = 1; i <= monHoc.getSoChuong(); i++) {
+			chuongModel.addElement("" + i);
+		}
+		cbChuong.setModel(chuongModel);
+
+		DefaultComboBoxModel<String> doKhoModel = new DefaultComboBoxModel<>();
+		for (int i = 1; i < 4; i++) {
+			doKhoModel.addElement("" + i);
+		}
+		cbDoKho.setModel(doKhoModel);
+
+		btnThemCauHoi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TuLuan tuLuan = new TuLuan(monHoc.getMaHocPhan(), cbChuong.getSelectedIndex() + 1,
+						taDeBai.getText(), cbDoKho.getSelectedIndex() + 1, taGoiYDapAn.getText());
+				String tenMon = "";
+				if (mon == 1) {
+					tenMon = "csdl";
+				} else if (mon == 2) {
+					tenMon = "ttnt";
+				} else if (mon == 3) {
+					tenMon = "lthdt";
+				} else if (mon == 4) {
+					tenMon = "mmt";
+				}
+				String nameFile = new String(
+						"data/cauhoi/" + tenMon.trim() + "_tl_c" + (cbChuong.getSelectedIndex()+1) + ".DAT");
+				ArrayList<TuLuan> dsTuLuan = (ArrayList<TuLuan>) ReadWriteData.readObject(nameFile);
+				dsTuLuan.add(tuLuan);
+				boolean check = ReadWriteData.writeObject(dsTuLuan, nameFile);
+				if (check) {
+					JOptionPane.showMessageDialog(null, "Thêm câu hỏi thành công!");
+				} else {
+					JOptionPane.showMessageDialog(null, "Đã có lỗi!");
+				}
+			}
+		});
+
 	}
 
 	public JButton getBtnQuayLai() {

@@ -13,23 +13,26 @@ public class TracNghiem extends CauHoi {
 		this.cacDapAn = new ArrayList<>();
 	}
 
-	public TracNghiem(String maMonHoc, int thuocChuong, String deBai, int doKho, float diem, boolean xaoTron,
+	public TracNghiem(String maMonHoc, int thuocChuong, String deBai, int doKho, boolean xaoTron,
 			ArrayList<DapAn> cacDapAn) {
-		super(maMonHoc, thuocChuong, deBai, doKho, diem);
+		super(maMonHoc, thuocChuong, deBai, doKho);
 		this.xaoTron = xaoTron;
 		this.cacDapAn = cacDapAn;
 	}
 
 	@Override
-	public void inCauHoi() {
-		System.out.println(" " + getDeBai());
+	public String inCauHoi() {
+		StringBuffer ndCauHoi = new StringBuffer();
+		ndCauHoi.append(" " + getDeBai());
 		if(xaoTron){
 			Collections.shuffle(cacDapAn);
 		}
 		
 		for(int i = 0; i< cacDapAn.size(); i++){
-			System.out.println("\t" + i+1 + ". " + cacDapAn.get(i));
+			ndCauHoi.append("\n\t" + (i+1) + ". " + cacDapAn.get(i).getNoiDung());
 		}
+		
+		return ndCauHoi.toString();
 	}
 	
 	public boolean getXaoTron() {

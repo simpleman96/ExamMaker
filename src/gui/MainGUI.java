@@ -37,63 +37,88 @@ public class MainGUI {
 	 */
 	private void initialize() {
 		frmMain = new FrameMain();
-		frmChonCongCu = new FrameChonCongCu();
+		// frmChonCongCu = new FrameChonCongCu();
 		frmMain.getBtnCoSo().addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frmMain.setVisible(false);
-				frmChonCongCu.setMon(1);
+				frmChonCongCu = new FrameChonCongCu(1);
 				frmChonCongCu.setTitle("Cơ Sở Dữ Liệu");
+				frmChonCongCu.getBtnQuayLai().addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						frmChonCongCu.setVisible(false);
+						frmMain.setVisible(true);
+					}
+				});
+
 				frmChonCongCu.setVisible(true);
 			}
 		});
-		
-		frmChonCongCu.getBtnQuayLai().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				frmChonCongCu.setVisible(false);
-				frmMain.setVisible(true);
-			}
-		});
-		
+
 		frmMain.getBtnTriTue().addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frmMain.setVisible(false);
-				frmChonCongCu.setMon(2);
+				frmChonCongCu = new FrameChonCongCu(2);
 				frmChonCongCu.setTitle("Trí Tuệ Nhân Tạo");
+				frmChonCongCu.getBtnQuayLai().addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						frmChonCongCu.setVisible(false);
+						frmMain.setVisible(true);
+					}
+				});
+
 				frmChonCongCu.setVisible(true);
 			}
 		});
-		
-	
+
 		frmMain.getBtnLapTrinh().addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frmMain.setVisible(false);
-				frmChonCongCu.setMon(3);
+				frmChonCongCu = new FrameChonCongCu(3);
 				frmChonCongCu.setTitle("Lập Trình Hướng Đối Tượng");
+				frmChonCongCu.getBtnQuayLai().addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						frmChonCongCu.setVisible(false);
+						frmMain.setVisible(true);
+					}
+				});
+
 				frmChonCongCu.setVisible(true);
 			}
 		});
-			
+
 		frmMain.getBtnMang().addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frmMain.setVisible(false);
-				frmChonCongCu.setMon(4);
+				frmChonCongCu = new FrameChonCongCu(4);
 				frmChonCongCu.setTitle("Mạng Máy Tính");
+				frmChonCongCu.getBtnQuayLai().addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						frmChonCongCu.setVisible(false);
+						frmMain.setVisible(true);
+					}
+				});
+
 				frmChonCongCu.setVisible(true);
 			}
-		});	
+		});
+
+
 	}
-	
-	
-	
-	
+
 }

@@ -26,13 +26,13 @@ public class FrameTaoDeThi extends JFrame {
 	private JButton btnQuayLai;
 	private Integer mon;	
 	
-	public FrameTaoDeThi(){
-		frmTaoDeNgauNhien = new FrameTaoDeNgauNhien();
-		frmTuTaoDe = new FrameTuTaoDeThi();
+	public FrameTaoDeThi(Integer m){
+		this.mon = m;
+		frmTaoDeNgauNhien = new FrameTaoDeNgauNhien(mon);
+		frmTuTaoDe = new FrameTuTaoDeThi(mon);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 150, 400, 400);
-		mon = 0;
 		panel = new JPanel();
 		setContentPane(panel);
 		
@@ -54,6 +54,7 @@ public class FrameTaoDeThi extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+//				frmTuTaoDe.setMon(mon);
 				if(mon == 1){
 					frmTuTaoDe.setTitle("Tự Tạo Đề Thi - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){
@@ -78,6 +79,7 @@ public class FrameTaoDeThi extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+//				frmTaoDeNgauNhien.setMon(mon);
 				if(mon == 1){
 					frmTaoDeNgauNhien.setTitle("Tạo Ngẫu Nhiên - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){

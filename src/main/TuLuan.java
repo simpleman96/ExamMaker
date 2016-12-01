@@ -8,14 +8,17 @@ public class TuLuan extends CauHoi{
 		goiYDapAn = "Khong co goi y.";
 	}
 	
-	public TuLuan(String maMonHoc, int thuocChuong, String deBai, int doKho, float diem, String goiYDapAn){
-		super(maMonHoc, thuocChuong, deBai, doKho, diem);
+	public TuLuan(String maMonHoc, int thuocChuong, String deBai, int doKho, String goiYDapAn){
+		super(maMonHoc, thuocChuong, deBai, doKho);
 		this.goiYDapAn = goiYDapAn;
 	}
 	
 	@Override
-	public void inCauHoi() {
-		System.out.println(" " + getDeBai());
+	public String inCauHoi() {
+		StringBuffer ndCauHoi = new StringBuffer();
+		ndCauHoi.append(" " + getDeBai());
+		ndCauHoi.append("\n\n\n\n\n\n\n\n");
+		return ndCauHoi.toString();
 	}
 	
 	

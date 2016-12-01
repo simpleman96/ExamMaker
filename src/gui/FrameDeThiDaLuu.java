@@ -1,20 +1,24 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JList;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import javax.swing.JEditorPane;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JButton;
 import java.awt.SystemColor;
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import main.DeThi;
+import main.ReadWriteData;
 
 public class FrameDeThiDaLuu extends JFrame {
 
@@ -24,6 +28,8 @@ public class FrameDeThiDaLuu extends JFrame {
 	private JButton btnQuayLai;
 	
 	private Integer mon;
+	private DefaultListModel<String> deModel = new DefaultListModel<>();
+	private ArrayList<DeThi> dsDe;
 	
 	/**
 	 * Launch the application.
@@ -32,7 +38,7 @@ public class FrameDeThiDaLuu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrameDeThiDaLuu frame = new FrameDeThiDaLuu();
+					FrameDeThiDaLuu frame = new FrameDeThiDaLuu(1);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +50,8 @@ public class FrameDeThiDaLuu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FrameDeThiDaLuu() {
+	public FrameDeThiDaLuu(Integer m) {
+		this.mon = m;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 20, 1000, 700);
 		contentPane = new JPanel();
@@ -76,7 +83,40 @@ public class FrameDeThiDaLuu extends JFrame {
 		JButton btnSDng = new JButton("Sử dụng đề");
 		btnSDng.setBackground(SystemColor.activeCaptionBorder);
 		btnSDng.setBounds(854, 627, 120, 23);
+		
+		initData();
+		
 		contentPane.add(btnSDng);
+	}
+	
+	private void initData(){
+		String tenMon = "";
+		if (mon == 1) {
+			tenMon = "csdl";
+		} else if (mon == 2) {
+			tenMon = "ttnt";
+		} else if (mon == 3) {
+			tenMon = "lthdt";
+		} else if (mon == 4) {
+			tenMon = "mmt";
+		}
+		
+		String nameFile = new String("data/dedaluu/"+tenMon.trim() + ".DAT");
+		dsDe = (ArrayList<DeThi>)ReadWriteData.readObject(nameFile);
+		
+		for (int i = 0; i < dsDe.size(); i++) {
+			deModel.addElement("Đề số "+ (i+1));
+		}
+		listDe.setModel(deModel);
+		
+		listDe.addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				int de = listDe.getSelectedIndex();
+				showDe.setText(dsDe.get(de).inDeThi());
+			}
+		});
 	}
 
 	public JList getListDe() {

@@ -28,10 +28,11 @@ public class FrameChonCongCu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FrameChonCongCu() {
-		frmTaoDeThi = new FrameTaoDeThi();
-		frmThemCauHoi = new FrameThemCauHoi();
-		frmDeDaLuu = new FrameDeThiDaLuu();
+	public FrameChonCongCu(Integer m) {
+		this.mon = m;
+		frmTaoDeThi = new FrameTaoDeThi(mon);
+		frmThemCauHoi = new FrameThemCauHoi(mon);
+		frmDeDaLuu = new FrameDeThiDaLuu(mon);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 150, 400, 400);
@@ -39,7 +40,6 @@ public class FrameChonCongCu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		mon = 0;
 		
 		JLabel lbChonCongCu = new JLabel("Chọn công cụ");
 		lbChonCongCu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -56,7 +56,7 @@ public class FrameChonCongCu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				frmTaoDeThi.setMon(mon);
+//				frmTaoDeThi.setMon(mon);
 				if(mon == 1){
 					frmTaoDeThi.setTitle("Tạo Đề Thi - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){
@@ -80,7 +80,7 @@ public class FrameChonCongCu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				frmThemCauHoi.setMon(mon);
+//				frmThemCauHoi.setMon(mon);
 				if(mon == 1){
 					frmThemCauHoi.setTitle("Thêm câu hỏi - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){
@@ -102,7 +102,7 @@ public class FrameChonCongCu extends JFrame {
 		btnDeThiDaLuu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				frmDeDaLuu.setMon(mon);
+//				frmDeDaLuu.setMon(mon);
 				if(mon == 1){
 					frmDeDaLuu.setTitle("Đề thi đã lưu - Cơ Sở Dữ Liệu");
 				}else if(mon == 2){

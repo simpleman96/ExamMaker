@@ -9,19 +9,19 @@ public class MonHoc {
 		if(mon == 1){
 			tenMonHoc = "Cơ Sở Dữ Liệu";
 			maHocPhan = "IT3090";
-			soChuong = 6;
+			soChuong = 5;
 		}else if(mon == 2){
 			tenMonHoc = "Trí Tuệ Nhân Tạo";
 			maHocPhan = "IT3100";
-			soChuong  = 9;
+			soChuong  = 4;
 		}else if(mon == 3){
 			tenMonHoc = "Lập Trình Hướng Đối Tượng";
 			maHocPhan = "IT3110";
-			soChuong = 12;
+			soChuong = 6;
 		}else{
 			tenMonHoc = "Mạng Máy Tính";
 			maHocPhan = "IT3120";
-			soChuong = 5;
+			soChuong = 3;
 		}
 	}
 	

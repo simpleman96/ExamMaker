@@ -7,25 +7,25 @@ public abstract class CauHoi implements Serializable {
 	private int thuocChuong;
 	private String deBai;
 	private int doKho;
-	private float diem;
+//	private float diem;
 	
 	public CauHoi(){
 		maMonHoc = "MH000";
 		thuocChuong = 0;
 		deBai = "Khong co de bai";
 		doKho = 0;
-		diem = 0.0f;
+//		diem = 0.0f;
 	}
 	
-	public CauHoi(String maMonHoc, int thuocChuong, String deBai, int doKho, float diem){
+	public CauHoi(String maMonHoc, int thuocChuong, String deBai, int doKho){
 		this.maMonHoc = maMonHoc;
 		this.thuocChuong = thuocChuong;
 		this.deBai = deBai;
 		this.doKho = doKho;
-		this.diem = diem;
+//		this.diem = diem;
 	}
 	
-	public abstract void inCauHoi();
+	public abstract String inCauHoi();
 	
 // Các getter setter
 	
@@ -53,13 +53,5 @@ public abstract class CauHoi implements Serializable {
 	public void setDoKho(int doKho) {
 		this.doKho = doKho;
 	}
-	public float getDiem() {
-		return diem;
-	}
-	public void setDiem(float diem) {
-		this.diem = diem;
-	}
-	
-	
 
 }

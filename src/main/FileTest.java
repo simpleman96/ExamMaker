@@ -1,50 +1,62 @@
 package main;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class FileTest {
-	private static ObjectOutputStream obOutput;
-	private static ObjectInputStream obInput;
 
-	public static void main(String[] args){
-		File file = new File("test.DAT");
-//		String[] string = {"Hello", "Hi"};
-//		DapAn dapAn = new DapAn("Dap An 1", true);
-//		ArrayList<DapAn> alDapAn = new ArrayList<>();
-//		alDapAn.add(dapAn);
-//		TracNghiem tracNghiem = new TracNghiem("MH001", 1, "Đây là đề bài.", 1, 1, false, alDapAn);
+	// Tao du lieu cong nghiep :v
+	public static void main(String[] args) {
+//		String nameFile = new String("data/dedaluu/csdl.DAT");
+//		ArrayList<DeThi> dsDe = (ArrayList<DeThi>) ReadWriteData.readObject(nameFile);
+//		for (DeThi deThi : dsDe) {
+//			System.out.print(deThi.inDeThi());
+//		}
+//		taoCauHoiTatCaCacMom();
 		
-		TracNghiem tracNghiem = new TracNghiem();
-//		String[] string = new String[2];;
-//		FileOutputStream fileOputStream;
-		FileInputStream fileInputStream;	
-		try {
-//			fileOputStream = new FileOutputStream(file);
-//			obOutput = new ObjectOutputStream(fileOputStream);
-//			obOutput.writeObject(tracNghiem);
-			fileInputStream = new FileInputStream(file);
-			obInput = new ObjectInputStream(fileInputStream);
-			tracNghiem = (TracNghiem)obInput.readObject();
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		int mon;
+//
+//		for (int i = 1; i < 5; i++) {
+//			String tenMon = null;
+//			int soCauTN = 20;
+//			int soCauTL = 6;
+//			mon = i;
+//			if (mon == 1) {
+//				tenMon = "csdl";
+//				soCauTN = 20;
+//				soCauTL = 8;
+//			} else if (mon == 2) {
+//				tenMon = "ttnt";
+//				soCauTN = 15;
+//				soCauTL = 6;
+//			} else if (mon == 3) {
+//				soCauTN = 25;
+//				soCauTL = 12;
+//				tenMon = "lthdt";
+//			} else if (mon == 4) {
+//				tenMon = "mmt";
+//				soCauTN = 17;
+//				soCauTL = 7;
+//			}
+//			MonHoc monHoc = new MonHoc(mon);
+//
+//			for (int j = 0; j < monHoc.getSoChuong(); j++) {
+//				String nameFileTN = new String("data/cauhoi/" + tenMon.trim() + "_tn_c" + (j + 1) + ".DAT");
+//				ArrayList<TracNghiem> dsTracNghiemw = ReadWriteData.taoDSCauHoiTN(mon, soCauTN);
+//				boolean check = ReadWriteData.writeObject(dsTracNghiemw, nameFileTN.trim());
+//				if (check)
+//					System.out.println("Ghi TN thanh cong!");
+//				check = false;
+//				String nameFileTL = new String("data/cauhoi/" + tenMon.trim() + "_tl_c" + (j + 1) + ".DAT");
+//				ArrayList<TuLuan> dsTuLuanw = ReadWriteData.taoDSCauHoiTL(mon, soCauTL);
+//				check = ReadWriteData.writeObject(dsTuLuanw, nameFileTL.trim());
+//				if (check)
+//					System.out.println("Ghi TL thanh cong!");
+//			}
+//		}
+
 		
-		System.out.println(tracNghiem.getDeBai() + "|" + tracNghiem.getThuocChuong()+"|"+ 
-		tracNghiem.getMaMonHoc()+"|"+tracNghiem.getDoKho()+"|"+tracNghiem.getDiem()
-		+"|"+ tracNghiem.getCacDapAn().get(0).getNoiDung());
+		
+		
 	}
 }
