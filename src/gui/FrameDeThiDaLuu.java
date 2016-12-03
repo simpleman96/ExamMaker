@@ -18,7 +18,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import main.DeThi;
+import main.PrintPDF;
 import main.ReadWriteData;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
 
 public class FrameDeThiDaLuu extends JFrame {
 
@@ -30,7 +34,8 @@ public class FrameDeThiDaLuu extends JFrame {
 	private Integer mon;
 	private DefaultListModel<String> deModel = new DefaultListModel<>();
 	private ArrayList<DeThi> dsDe;
-	
+	private PrintPDF print = new PrintPDF();
+	private JLabel lblNiDung;
 	/**
 	 * Launch the application.
 	 */
@@ -64,13 +69,13 @@ public class FrameDeThiDaLuu extends JFrame {
 		contentPane.add(listDe);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(160, 11, 814, 600);
+		scrollPane.setBounds(160, 36, 814, 575);
 		contentPane.add(scrollPane);
 		
 		showDe = new JEditorPane();
 		scrollPane.setViewportView(showDe);
 		
-		JLabel lblThi = new JLabel("Mời chọn đề");
+		JLabel lblThi = new JLabel("Chọn đề thi");
 		lblThi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblThi.setBounds(10, 11, 136, 24);
 		contentPane.add(lblThi);
@@ -80,13 +85,33 @@ public class FrameDeThiDaLuu extends JFrame {
 		btnQuayLai.setBounds(10, 627, 89, 23);
 		contentPane.add(btnQuayLai);
 		
-		JButton btnSDng = new JButton("Sử dụng đề");
+		
+		
+		initData();
+		JButton btnSDng = new JButton("Xuất ra file PDF");
+		btnSDng.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int de = listDe.getSelectedIndex();
+				String deThi = dsDe.get(de).inDeThi();
+				
+				try {
+					print.xuatDeThi("G://deThi1.pdf", deThi );
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
 		btnSDng.setBackground(SystemColor.activeCaptionBorder);
 		btnSDng.setBounds(854, 627, 120, 23);
 		
-		initData();
-		
 		contentPane.add(btnSDng);
+		
+		lblNiDung = new JLabel("Nội dung đề thi");
+		lblNiDung.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNiDung.setBounds(160, 16, 106, 19);
+		contentPane.add(lblNiDung);
 	}
 	
 	private void initData(){
