@@ -58,6 +58,12 @@ public class FrameTaoDeNgauNhien extends JFrame {
 	private JCheckBox chbXaoTronCH;
 	private JLabel lblTngim;
 	private JTextField tfTongDiem;
+	
+	ArrayList<TracNghiem> dsTracNghiem = new ArrayList<>();
+	ArrayList<TuLuan> dsTuLuan = new ArrayList<>();
+
+	MonHoc monHoc;
+
 
 	/**
 	 * Launch the application.
@@ -80,6 +86,7 @@ public class FrameTaoDeNgauNhien extends JFrame {
 	 */
 	public FrameTaoDeNgauNhien(Integer mon) {
 		this.mon = mon;
+		monHoc = new MonHoc(mon);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 150, 420, 420);
 		contentPane = new JPanel();
@@ -132,7 +139,7 @@ public class FrameTaoDeNgauNhien extends JFrame {
 		tfTongDiem = new JTextField();
 		tfTongDiem.setColumns(10);
 
-		initData();
+//		initData();
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -188,43 +195,7 @@ public class FrameTaoDeNgauNhien extends JFrame {
 						tfThoiGian, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 				.addGap(20).addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(btnQuayLai)
 						.addComponent(btnXuatDe).addComponent(btnXuatDA))));
-		contentPane.setLayout(gl_contentPane);
-	}
-
-	private void initData() {
-		MonHoc monHoc = new MonHoc(mon);
-		if (mon == 1) {
-			tenMon = "csdl";
-		} else if (mon == 2) {
-			tenMon = "ttnt";
-		} else if (mon == 3) {
-			tenMon = "lthdt";
-		} else if (mon == 4) {
-			tenMon = "mmt";
-		}
-
-		ArrayList<TracNghiem> dsTracNghiem = new ArrayList<>();
-		ArrayList<TuLuan> dsTuLuan = new ArrayList<>();
-
-		for (int i = 1; i <= monHoc.getSoChuong(); i++) {
-
-			String nameFileTN = new String("data/cauhoi/" + tenMon.trim() + "_tn_c" + i + ".DAT");
-			dsTracNghiem.addAll((ArrayList<TracNghiem>) ReadWriteData.readObject(nameFileTN.trim()));
-
-			String nameFileTL = new String("data/cauhoi/" + tenMon.trim() + "_tl_c" + i + ".DAT");
-			dsTuLuan.addAll((ArrayList<TuLuan>) ReadWriteData.readObject(nameFileTL.trim()));
-		}
-
-		for (int i = 0; i < dsTracNghiem.size(); i++) {
-			modelTracNghiem.addElement("" + (i + 1));
-		}
-		cbTracNghiem.setModel(modelTracNghiem);
-
-		for (int i = 0; i < dsTuLuan.size(); i++) {
-			modelTuLuan.addElement("" + (i + 1));
-		}
-		cbTuLuan.setModel(modelTuLuan);
-
+		
 		btnXuatDe.addActionListener(new ActionListener() {
 
 			@Override
@@ -258,6 +229,45 @@ public class FrameTaoDeNgauNhien extends JFrame {
 				}
 			}
 		});
+
+		
+		contentPane.setLayout(gl_contentPane);
+	}
+
+	public void initData() {
+		dsCauHoiDe.clear();
+		modelTracNghiem.removeAllElements();
+		modelTuLuan.removeAllElements();
+		if (mon == 1) {
+			tenMon = "csdl";
+		} else if (mon == 2) {
+			tenMon = "ttnt";
+		} else if (mon == 3) {
+			tenMon = "lthdt";
+		} else if (mon == 4) {
+			tenMon = "mmt";
+		}
+
+	
+		for (int i = 1; i <= monHoc.getSoChuong(); i++) {
+
+			String nameFileTN = new String("data/cauhoi/" + tenMon.trim() + "_tn_c" + i + ".DAT");
+			dsTracNghiem.addAll((ArrayList<TracNghiem>) ReadWriteData.readObject(nameFileTN.trim()));
+
+			String nameFileTL = new String("data/cauhoi/" + tenMon.trim() + "_tl_c" + i + ".DAT");
+			dsTuLuan.addAll((ArrayList<TuLuan>) ReadWriteData.readObject(nameFileTL.trim()));
+		}
+
+		for (int i = 0; i < dsTracNghiem.size(); i++) {
+			modelTracNghiem.addElement("" + (i + 1));
+		}
+		cbTracNghiem.setModel(modelTracNghiem);
+
+		for (int i = 0; i < dsTuLuan.size(); i++) {
+			modelTuLuan.addElement("" + (i + 1));
+		}
+		cbTuLuan.setModel(modelTuLuan);
+
 
 	}
 

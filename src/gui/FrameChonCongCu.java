@@ -19,6 +19,7 @@ public class FrameChonCongCu extends JFrame {
 	private FrameTaoDeThi frmTaoDeThi;
 	private FrameThemCauHoi frmThemCauHoi;
 	private FrameDeThiDaLuu frmDeDaLuu;
+	private JButton btnDeThiDaLuu;
 	
 	private JButton btnTaoDeThi;
 	private JButton btnThemCauHoi;
@@ -90,12 +91,13 @@ public class FrameChonCongCu extends JFrame {
 				}else {
 					frmThemCauHoi.setTitle("Thêm câu hỏi - Mạng Máy Tính");
 				}
+				
 				frmThemCauHoi.setVisible(true);
 			}
 		});
 		contentPane.add(btnThemCauHoi);
 		
-		JButton btnDeThiDaLuu = new JButton("Đề thi đã tạo");
+		btnDeThiDaLuu = new JButton("Đề thi đã tạo");
 		btnDeThiDaLuu.setBackground(SystemColor.activeCaptionBorder);
 		btnDeThiDaLuu.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDeThiDaLuu.setBounds(110, 200, 150, 30);
@@ -112,6 +114,7 @@ public class FrameChonCongCu extends JFrame {
 				}else {
 					frmDeDaLuu.setTitle("Đề thi đã lưu - Mạng Máy Tính");
 				}
+				frmDeDaLuu.initData();
 				frmDeDaLuu.setVisible(true);
 			}
 		});

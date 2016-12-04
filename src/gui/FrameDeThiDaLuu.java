@@ -26,11 +26,11 @@ public class FrameDeThiDaLuu extends JFrame {
 	private JList listDe;
 	private JEditorPane showDe;
 	private JButton btnQuayLai;
-	
+
 	private Integer mon;
 	private DefaultListModel<String> deModel = new DefaultListModel<>();
 	private ArrayList<DeThi> dsDe;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -58,38 +58,51 @@ public class FrameDeThiDaLuu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		listDe = new JList();
 		listDe.setBounds(10, 36, 136, 575);
 		contentPane.add(listDe);
-		
+		listDe.setModel(deModel);
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(160, 11, 814, 600);
 		contentPane.add(scrollPane);
-		
+
 		showDe = new JEditorPane();
 		scrollPane.setViewportView(showDe);
-		
+
 		JLabel lblThi = new JLabel("Mời chọn đề");
 		lblThi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblThi.setBounds(10, 11, 136, 24);
 		contentPane.add(lblThi);
-		
+
 		btnQuayLai = new JButton("Quay Lại");
 		btnQuayLai.setBackground(SystemColor.activeCaptionBorder);
 		btnQuayLai.setBounds(10, 627, 89, 23);
 		contentPane.add(btnQuayLai);
-		
+
 		JButton btnSDng = new JButton("Sử dụng đề");
 		btnSDng.setBackground(SystemColor.activeCaptionBorder);
 		btnSDng.setBounds(854, 627, 120, 23);
-		
-		initData();
-		
+
+		// initData();
+		listDe.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				int de = listDe.getSelectedIndex();
+				if (de < 0 || de >= dsDe.size())
+					de = 0;
+				showDe.setText(dsDe.get(de).inDeThi());
+			}
+		});
+
 		contentPane.add(btnSDng);
 	}
-	
-	private void initData(){
+
+	public void initData() {
+		deModel.addElement("");
+		deModel.clear();
 		String tenMon = "";
 		if (mon == 1) {
 			tenMon = "csdl";
@@ -100,23 +113,14 @@ public class FrameDeThiDaLuu extends JFrame {
 		} else if (mon == 4) {
 			tenMon = "mmt";
 		}
-		
-		String nameFile = new String("data/dedaluu/"+tenMon.trim() + ".DAT");
-		dsDe = (ArrayList<DeThi>)ReadWriteData.readObject(nameFile);
-		
+
+		String nameFile = new String("data/dedaluu/" + tenMon.trim() + ".DAT");
+		dsDe = (ArrayList<DeThi>) ReadWriteData.readObject(nameFile);
+
 		for (int i = 0; i < dsDe.size(); i++) {
-			deModel.addElement("Đề số "+ (i+1));
+			deModel.addElement("Đề số " + (i + 1));
 		}
-		listDe.setModel(deModel);
-		
-		listDe.addListSelectionListener(new ListSelectionListener() {
-			
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				int de = listDe.getSelectedIndex();
-				showDe.setText(dsDe.get(de).inDeThi());
-			}
-		});
+
 	}
 
 	public JList getListDe() {
@@ -150,5 +154,5 @@ public class FrameDeThiDaLuu extends JFrame {
 	public void setMon(Integer mon) {
 		this.mon = mon;
 	}
-	
+
 }

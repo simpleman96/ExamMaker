@@ -64,6 +64,7 @@ public class FrameTaoDeThi extends JFrame {
 				}else {
 					frmTuTaoDe.setTitle("Tự Tạo Đề Thi - Mạng Máy Tính");
 				}
+				frmTuTaoDe.initListsData();
 				frmTuTaoDe.setVisible(true);
 			}
 		});
@@ -89,6 +90,7 @@ public class FrameTaoDeThi extends JFrame {
 				}else {
 					frmTaoDeNgauNhien.setTitle("Tạo Ngẫu Nhiên - Mạng Máy Tính");
 				}
+				frmTaoDeNgauNhien.initData();
 				frmTaoDeNgauNhien.setVisible(true);
 			}
 		});
