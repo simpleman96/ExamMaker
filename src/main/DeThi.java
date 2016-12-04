@@ -53,7 +53,7 @@ public class DeThi implements Serializable{
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("\n\n\t\tKiem tra\n");
 		buffer.append("\nMon: " + tenMonHoc + "\t\tMa hoc phan: " + maHocPhan);
-		buffer.append("\nHoc Ky: " + hocKy + "\t\tThoi Gian: " + thoiGian + "\t\tTong diem:" + tongDiem);
+		buffer.append("\nHoc Ky: " + hocKy + "\t\tThoi Gian: " + thoiGian + " phút" +  "\t\tTong diem:" + tongDiem);
 		buffer.append("\nHo va Ten: \t\t\t\t\tMSSV:");
 		buffer.append("\n\n");
 		if(xaoTronCauHoi){

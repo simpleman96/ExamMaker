@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -38,6 +39,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 
 public class FrameTuTaoDeThi extends JFrame {
 
@@ -57,12 +59,11 @@ public class FrameTuTaoDeThi extends JFrame {
 	private MonHoc monHoc = null;
 	private String tenMon = null;
 	private JLabel lblNewLabel;
-	private JTextField tfTongDiem;
 	private JLabel lblHcK;
-	private JTextField tfHocKy;
 	private JCheckBox chbXaoTronCH;
 	private JLabel lblThiGian;
 	private JTextField tfThoiGian;
+	private JComboBox comboBox_1;
 
 	private boolean setListenenr = false;
 
@@ -145,9 +146,9 @@ public class FrameTuTaoDeThi extends JFrame {
 		JLabel label_2 = new JLabel("Câu hỏi trong đề");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
-		JLabel label_3 = new JLabel("Tạo đề thi tự tạo");
-		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		JLabel lblTTo = new JLabel("Tạo đề thi");
+		lblTTo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTTo.setFont(new Font("Tahoma", Font.BOLD, 30));
 
 		btnThemTN = new JButton("Thêm các câu hỏi vào đề");
 		btnThemTN.setBackground(SystemColor.activeCaptionBorder);
@@ -158,17 +159,11 @@ public class FrameTuTaoDeThi extends JFrame {
 		lblNewLabel = new JLabel("Tổng điểm");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
-		tfTongDiem = new JTextField();
-		tfTongDiem.setColumns(10);
-
-		chbXaoTronCH = new JCheckBox("có xáo trộn các câu hỏi");
+		chbXaoTronCH = new JCheckBox("Xáo trộn");
 		chbXaoTronCH.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		lblHcK = new JLabel("Học kỳ");
 		lblHcK.setFont(new Font("Tahoma", Font.PLAIN, 14));
-
-		tfHocKy = new JTextField();
-		tfHocKy.setColumns(10);
 
 		lblThiGian = new JLabel("Thời gian");
 		lblThiGian.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -178,7 +173,32 @@ public class FrameTuTaoDeThi extends JFrame {
 
 		JButton btnXutpn = new JButton("Xuất Đáp Án");
 		btnXutpn.setBackground(SystemColor.activeCaptionBorder);
+		
+		JComboBox comboBox = new JComboBox();
+		DefaultComboBoxModel<String> cbbTongDiem = new DefaultComboBoxModel<String>();
+		cbbTongDiem.addElement("5");
+		cbbTongDiem.addElement("10");
+		cbbTongDiem.addElement("20");
+		cbbTongDiem.addElement("100");
+		comboBox.setModel(cbbTongDiem);
+		
+		comboBox_1 = new JComboBox();
+		DefaultComboBoxModel<String> cbbHocKy = new DefaultComboBoxModel<String>();
+		cbbHocKy.addElement("1");
+		cbbHocKy.addElement("2");
+		cbbHocKy.addElement("3");
+		
+		comboBox_1.setModel(cbbHocKy);
+		
+		JLabel lblNewLabel_1 = new JLabel("phút");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		
+		
+		
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+<<<<<<< HEAD
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane
 						.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -259,6 +279,106 @@ public class FrameTuTaoDeThi extends JFrame {
 						.addComponent(label).addComponent(label_1).addComponent(label_2))
 				.addGap(11)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+=======
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(20)
+							.addComponent(btnQuayLai))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(20)
+									.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+									.addGap(10)
+									.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 254, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(160)
+									.addComponent(btnThemTN)))
+							.addGap(10)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnThemTL)
+								.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE))
+							.addGap(10)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(btnXoa)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(btnXutpn)
+									.addGap(18)
+									.addComponent(btnXuatDe))
+								.addComponent(scrollPane_3, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(20)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblChng, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+									.addGap(10)
+									.addComponent(label, GroupLayout.PREFERRED_SIZE, 254, GroupLayout.PREFERRED_SIZE)
+									.addGap(10)
+									.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)
+									.addGap(10))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(lblHcK, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(comboBox_1, 0, 56, Short.MAX_VALUE)))
+									.addGap(471)))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(chbXaoTronCH, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)
+										.addGap(96))
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblThiGian, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(tfThoiGian, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(lblNewLabel_1)
+										.addGap(190)))
+								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE))))
+					.addGap(40))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(352)
+					.addComponent(lblTTo, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(459, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(14)
+					.addComponent(lblTTo, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(chbXaoTronCH))
+						.addComponent(lblNewLabel))
+					.addGap(13)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblHcK)
+						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblThiGian)
+						.addComponent(tfThoiGian, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_1))
+					.addGap(14)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblChng)
+						.addComponent(label)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label_1)
+							.addComponent(label_2)))
+					.addGap(11)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+>>>>>>> 5d862f33f787d447471697a5e03710010e9d4f20
 						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
 						.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
@@ -340,14 +460,17 @@ public class FrameTuTaoDeThi extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DeThi deThi = new DeThi(monHoc.getTenMonHoc(), monHoc.getMaHocPhan(), tfHocKy.getText().trim(),
-						tfThoiGian.getText().trim(), Float.parseFloat(tfTongDiem.getText().trim()),
-						chbXaoTronCH.isSelected(), dsCauHoiDe);
+//				DeThi deThi = new DeThi(monHoc.getTenMonHoc(), monHoc.getMaHocPhan(), tfHocKy.getText().trim(),
+//						
+//						chbXaoTronCH.isSelected(), dsCauHoiDe);
 				String nameFile = new String("data/dedaluu/" + tenMon.trim() + ".DAT");
 				ArrayList<DeThi> dsDe = new ArrayList<>();
 				dsDe = (ArrayList<DeThi>) ReadWriteData.readObject(nameFile.trim());
-				dsDe.add(deThi);
+				//dsDe.add(deThi);
 				boolean check = ReadWriteData.writeObject(dsDe, nameFile);
+				
+				
+					
 				if (check) {
 					JOptionPane.showMessageDialog(null, "Xuất đề thành công!");
 				} else {
