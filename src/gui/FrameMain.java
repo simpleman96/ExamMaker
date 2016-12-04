@@ -31,10 +31,10 @@ public class FrameMain extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbChonMon = new JLabel("Chọn môn của bạn");
+		JLabel lbChonMon = new JLabel("Chọn môn học");
 		lbChonMon.setHorizontalAlignment(SwingConstants.CENTER);
-		lbChonMon.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbChonMon.setBounds(90, 30, 216, 25);
+		lbChonMon.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lbChonMon.setBounds(90, 30, 216, 37);
 		contentPane.add(lbChonMon);
 		
 		btnCoSo = new JButton("Cơ sở dữ liệu");

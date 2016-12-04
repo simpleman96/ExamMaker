@@ -60,17 +60,16 @@ public class FrameThemTuLuan extends JFrame {
 	public FrameThemTuLuan(Integer mon) {
 		this.mon = mon;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(450, 150, 450, 450);
+		setBounds(450, 150, 450, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		JLabel lblThmCuHi = new JLabel("Thêm câu hỏi tự luận");
 		lblThmCuHi.setHorizontalAlignment(SwingConstants.CENTER);
-		lblThmCuHi.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblThmCuHi.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
 		taDeBai = new JTextArea();
-		taDeBai.setText("Thêm đề bài ...");
 
 		JLabel lbDeBai = new JLabel("Đề bài");
 		lbDeBai.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -79,12 +78,11 @@ public class FrameThemTuLuan extends JFrame {
 		lbDapAn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		taGoiYDapAn = new JTextArea();
-		taGoiYDapAn.setText("Thêm gợi ý đáp án ...");
 		
 		btnQuayLai = new JButton("Quay Lại");
 		btnQuayLai.setBackground(SystemColor.activeCaptionBorder);
 		
-		btnThemCauHoi = new JButton("Thêm câu hỏi");
+		btnThemCauHoi = new JButton("Thêm");
 		btnThemCauHoi.setBackground(SystemColor.activeCaptionBorder);
 		
 		JLabel lblNewLabel = new JLabel("Độ khó");
@@ -123,17 +121,17 @@ public class FrameThemTuLuan extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNewLabel_2)
 								.addComponent(lblNewLabel))
-							.addGap(96)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(cbDoKho, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(cbChuong, Alignment.LEADING, 0, 74, Short.MAX_VALUE)))
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+							.addGap(29)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(cbDoKho, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(cbChuong, 0, 67, Short.MAX_VALUE)))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addGap(10)
 								.addComponent(btnQuayLai)
 								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(btnThemCauHoi))
-							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createSequentialGroup()
 								.addContainerGap()
 								.addComponent(taGoiYDapAn, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -144,18 +142,15 @@ public class FrameThemTuLuan extends JFrame {
 					.addGap(14)
 					.addComponent(lblThmCuHi)
 					.addGap(35)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_2)
 						.addComponent(cbChuong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(25)
-							.addComponent(lblNewLabel)
-							.addGap(33)
-							.addComponent(lbDeBai))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(18)
-							.addComponent(cbDoKho, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(28)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel)
+						.addComponent(cbDoKho, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(33)
+					.addComponent(lbDeBai)
 					.addGap(6)
 					.addComponent(taDeBai, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
 					.addGap(15)

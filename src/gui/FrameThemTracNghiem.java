@@ -75,10 +75,9 @@ public class FrameThemTracNghiem extends JFrame {
 
 		JLabel lblThmCuHi = new JLabel("Thêm câu hỏi trắc nghiệm");
 		lblThmCuHi.setHorizontalAlignment(SwingConstants.CENTER);
-		lblThmCuHi.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblThmCuHi.setFont(new Font("Tahoma", Font.PLAIN, 30));
 
 		taDeBai = new JTextArea();
-		taDeBai.setText("Thêm đề bài ...");
 
 		JLabel lbDeBai = new JLabel("Đề bài");
 		lbDeBai.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -87,7 +86,6 @@ public class FrameThemTracNghiem extends JFrame {
 		lbDapAn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		taDapAn = new JTextArea();
-		taDapAn.setText("Thêm đáp án ...");
 
 		btnThemDA = new JButton("Thêm đáp án");
 		btnThemDA.setBackground(SystemColor.activeCaptionBorder);
@@ -95,10 +93,10 @@ public class FrameThemTracNghiem extends JFrame {
 		btnQuayLai = new JButton("Quay Lại");
 		btnQuayLai.setBackground(SystemColor.activeCaptionBorder);
 
-		btnThemCauHoi = new JButton("Thêm câu hỏi");
+		btnThemCauHoi = new JButton("Thêm");
 		btnThemCauHoi.setBackground(SystemColor.activeCaptionBorder);
 
-		chbLaDung = new JCheckBox("là đáp án đúng");
+		chbLaDung = new JCheckBox("Đáp án đúng");
 
 		JLabel lblNewLabel = new JLabel("Chương");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -109,7 +107,7 @@ public class FrameThemTracNghiem extends JFrame {
 		cbChuong = new JComboBox();
 		cbChuong.setBackground(SystemColor.activeCaptionBorder);
 
-		chbXaoTron = new JCheckBox("có xáo trộn các đáp án");
+		chbXaoTron = new JCheckBox("Xáo trộn");
 
 		cbDoKho = new JComboBox();
 		cbDoKho.setBackground(SystemColor.activeCaptionBorder);
@@ -117,43 +115,81 @@ public class FrameThemTracNghiem extends JFrame {
 		initData();
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(108).addComponent(lblThmCuHi))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(10).addComponent(lblNewLabel).addGap(48)
-						.addComponent(cbChuong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(10)
-						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-						.addGap(18).addComponent(cbDoKho, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(10).addComponent(lbDeBai,
-						GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(10).addComponent(lbDapAn))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(10).addComponent(chbLaDung).addGap(1)
-						.addComponent(chbXaoTron).addGap(36).addComponent(btnThemDA))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(10).addComponent(btnQuayLai).addGap(194)
-						.addComponent(btnThemCauHoi))
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(Alignment.LEADING,
-								gl_contentPane.createSequentialGroup().addContainerGap().addComponent(taDapAn))
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup().addGap(10)
-								.addComponent(taDeBai, GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addGap(14).addComponent(lblThmCuHi).addGap(23)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel).addComponent(
-						cbChuong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addGap(20)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel_2)
-						.addComponent(cbDoKho, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE))
-				.addGap(20).addComponent(lbDeBai).addGap(6)
-				.addComponent(taDeBai, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE).addGap(15)
-				.addComponent(lbDapAn).addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(taDapAn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE).addGap(15)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(chbLaDung)
-						.addComponent(chbXaoTron).addComponent(btnThemDA))
-				.addGap(14).addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(btnQuayLai)
-						.addComponent(btnThemCauHoi))));
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(lblNewLabel)
+							.addGap(48)
+							.addComponent(cbChuong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(cbDoKho, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(lbDeBai, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(lbDapAn))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(taDeBai, GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(37)
+							.addComponent(lblThmCuHi))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(taDapAn, GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+									.addComponent(chbLaDung)
+									.addGap(59)
+									.addComponent(chbXaoTron)
+									.addPreferredGap(ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+									.addComponent(btnThemDA))
+								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+									.addComponent(btnQuayLai)
+									.addPreferredGap(ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
+									.addComponent(btnThemCauHoi)))))
+					.addGap(57))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblThmCuHi)
+					.addGap(26)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel)
+						.addComponent(cbChuong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(20)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_2)
+						.addComponent(cbDoKho, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(20)
+					.addComponent(lbDeBai)
+					.addGap(6)
+					.addComponent(taDeBai, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
+					.addGap(15)
+					.addComponent(lbDapAn)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(taDapAn, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addGap(15)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(chbLaDung)
+						.addComponent(btnThemDA)
+						.addComponent(chbXaoTron))
+					.addGap(14)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnQuayLai)
+						.addComponent(btnThemCauHoi)))
+		);
 		contentPane.setLayout(gl_contentPane);
 	}
 
